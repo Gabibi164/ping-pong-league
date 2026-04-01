@@ -66,7 +66,9 @@ export default function HomePage() {
       <div className="text-center mb-14">
         <div className="text-6xl mb-4">🏓</div>
         <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-3 leading-none">
-          BUREAU PING PONG
+          WOJO
+          <br />
+          PING PONG
           <br />
           <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
             LEAGUE
