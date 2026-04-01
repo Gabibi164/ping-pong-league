@@ -31,6 +31,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </head>
       <body className="bg-black text-gray-50 min-h-screen">
+        <script dangerouslySetInnerHTML={{ __html: `
+          document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+          document.addEventListener('gesturechange', function(e) { e.preventDefault(); });
+          document.addEventListener('touchmove', function(e) { if(e.touches.length > 1) e.preventDefault(); }, { passive: false });
+        `}} />
         <Navigation />
         <main className="container mx-auto px-4 pb-16 max-w-5xl">
           {children}
