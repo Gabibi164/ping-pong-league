@@ -146,8 +146,7 @@ export default function MatchesPage() {
                 onRefresh={load}
               />
             )
-          }}
-          ))}
+          })}
         </div>
       )}
 
