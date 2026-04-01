@@ -29,7 +29,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#3BBCD0" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className="bg-gray-950 text-gray-50 min-h-screen">
+      <body className="bg-black text-gray-50 min-h-screen">
         <Navigation />
         <main className="container mx-auto px-4 pb-16 max-w-5xl">
           {children}

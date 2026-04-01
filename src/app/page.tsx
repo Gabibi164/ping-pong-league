@@ -64,19 +64,17 @@ export default function HomePage() {
   return (
     <div className="min-h-[85vh] flex flex-col items-center justify-center py-12">
       {/* Hero */}
-      <div className="text-center mb-14">
-        <div className="text-6xl mb-4">🏓</div>
-        <h1 className="text-5xl sm:text-6xl font-black tracking-tight mb-3 leading-none">
-          WOJO
-          <br />
+      <div className="text-center mb-12">
+        <div className="mb-6">
+          <img src="/logo.png" alt="Wojo" className="w-28 h-28 mx-auto rounded-3xl shadow-2xl shadow-[#3BBCD0]/20" />
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-2 leading-none">
           PING PONG
           <br />
-          <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-            LEAGUE
-          </span>
+          <span className="wojo-text">LEAGUE</span>
         </h1>
-        <p className="text-gray-400 text-lg mt-4">
-          Clique sur ton nom pour accéder à ton profil.
+        <p className="text-gray-500 text-sm mt-3 tracking-wide uppercase font-semibold">
+          Clique sur ton nom pour accéder à ton profil
         </p>
       </div>
 
@@ -88,12 +86,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl">
             {/* Group A */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="h-0.5 flex-1 bg-blue-500/30" />
-                <span className="text-xs font-black uppercase tracking-widest text-blue-400 px-2">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-black uppercase tracking-widest text-[#3BBCD0]">
                   Groupe A
                 </span>
-                <div className="h-0.5 flex-1 bg-blue-500/30" />
+                <div className="h-px flex-1 bg-gradient-to-r from-[#3BBCD0]/30 to-transparent" />
               </div>
               <div className="flex flex-col gap-2">
                 {groupA.length === 0 && (
@@ -114,12 +111,11 @@ export default function HomePage() {
 
             {/* Group B */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="h-0.5 flex-1 bg-emerald-500/30" />
-                <span className="text-xs font-black uppercase tracking-widest text-emerald-400 px-2">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-black uppercase tracking-widest text-[#3BBCD0]">
                   Groupe B
                 </span>
-                <div className="h-0.5 flex-1 bg-emerald-500/30" />
+                <div className="h-px flex-1 bg-gradient-to-r from-[#3BBCD0]/30 to-transparent" />
               </div>
               <div className="flex flex-col gap-2">
                 {groupB.length === 0 && (
@@ -144,19 +140,19 @@ export default function HomePage() {
             {!showRegister ? (
               <button
                 onClick={() => setShowRegister(true)}
-                className="w-full border border-dashed border-gray-700 hover:border-gray-500 text-gray-500 hover:text-gray-300 rounded-xl py-3 text-sm font-semibold transition-all"
+                className="w-full border border-dashed border-white/10 hover:border-[#3BBCD0]/40 text-gray-600 hover:text-[#3BBCD0] rounded-2xl py-3.5 text-sm font-semibold transition-all"
               >
-                + S'inscrire
+                + S'inscrire à la ligue
               </button>
             ) : (
               <form
                 onSubmit={handleRegister}
-                className="bg-gray-900 border border-gray-800 rounded-xl p-5 flex flex-col gap-4"
+                className="card p-5 flex flex-col gap-4"
               >
                 <h2 className="text-base font-black text-white">S'inscrire à la ligue</h2>
 
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs text-gray-400 font-semibold uppercase tracking-wider">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs text-gray-500 font-semibold uppercase tracking-wider">
                     Prénom
                   </label>
                   <input
@@ -166,12 +162,12 @@ export default function HomePage() {
                     placeholder="Ton prénom"
                     maxLength={40}
                     required
-                    className="bg-gray-800 border border-gray-700 focus:border-gray-500 outline-none rounded-lg px-3 py-2 text-white text-sm"
+                    className="bg-white/[0.05] border border-white/10 focus:border-[#3BBCD0]/50 outline-none rounded-xl px-3 py-2.5 text-white text-sm placeholder:text-gray-600"
                   />
                 </div>
 
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs text-gray-400 font-semibold uppercase tracking-wider">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs text-gray-500 font-semibold uppercase tracking-wider">
                     Entreprise
                   </label>
                   <input
@@ -181,24 +177,24 @@ export default function HomePage() {
                     placeholder="Ton entreprise"
                     maxLength={60}
                     required
-                    className="bg-gray-800 border border-gray-700 focus:border-gray-500 outline-none rounded-lg px-3 py-2 text-white text-sm"
+                    className="bg-white/[0.05] border border-white/10 focus:border-[#3BBCD0]/50 outline-none rounded-xl px-3 py-2.5 text-white text-sm placeholder:text-gray-600"
                   />
                 </div>
 
-                {error && <p className="text-red-400 text-xs">{error}</p>}
+                {error && <p className="text-red-400 text-xs bg-red-400/10 px-3 py-2 rounded-lg">{error}</p>}
 
                 <div className="flex gap-2">
                   <button
                     type="submit"
                     disabled={registering || !newName.trim() || !newEntreprise.trim()}
-                    className="flex-1 bg-white text-gray-950 font-black rounded-lg py-2 text-sm hover:bg-gray-200 disabled:opacity-50 transition-all"
+                    className="flex-1 wojo-gradient text-black font-black rounded-xl py-2.5 text-sm disabled:opacity-40 transition-all hover:opacity-90"
                   >
                     {registering ? 'Inscription…' : 'S\'inscrire'}
                   </button>
                   <button
                     type="button"
                     onClick={() => { setShowRegister(false); setError(null) }}
-                    className="px-4 py-2 text-sm text-gray-500 hover:text-gray-300 transition-colors"
+                    className="px-4 py-2 text-sm text-gray-600 hover:text-gray-300 transition-colors"
                   >
                     Annuler
                   </button>
@@ -210,19 +206,20 @@ export default function HomePage() {
       )}
 
       {/* Quick nav */}
-      <div className="mt-14 flex flex-wrap justify-center gap-3">
+      <div className="mt-10 flex flex-wrap justify-center gap-2 w-full max-w-2xl">
         {[
-          { href: '/standings', label: '📊 Classement', sub: 'Voir les tableaux' },
-          { href: '/matches', label: '⚡ Matchs', sub: 'Saisir des résultats' },
-          { href: '/playoffs', label: '🏆 Playoffs', sub: 'Bracket final' },
-        ].map(({ href, label, sub }) => (
+          { href: '/standings', label: 'Classement', icon: '📊', sub: 'Voir les groupes' },
+          { href: '/matches', label: 'Matchs', icon: '⚡', sub: 'Résultats & créneaux' },
+          { href: '/playoffs', label: 'Playoffs', icon: '🏆', sub: 'Bracket final' },
+        ].map(({ href, label, icon, sub }) => (
           <a
             key={href}
             href={href}
-            className="flex flex-col items-center gap-0.5 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-gray-600 rounded-xl px-5 py-3 transition-all"
+            className="flex-1 min-w-[100px] flex flex-col items-center gap-1 glass-btn rounded-2xl px-4 py-3.5 transition-all"
           >
-            <span className="font-bold text-sm text-gray-200">{label}</span>
-            <span className="text-xs text-gray-500">{sub}</span>
+            <span className="text-xl">{icon}</span>
+            <span className="font-bold text-sm text-white">{label}</span>
+            <span className="text-xs text-gray-600">{sub}</span>
           </a>
         ))}
       </div>
@@ -243,33 +240,27 @@ function PlayerButton({
   isActive: boolean
   onSelect: (name: string) => void
 }) {
-  const activeStyle =
-    group === 'A'
-      ? 'border-blue-500 bg-blue-500/15 text-white'
-      : 'border-emerald-500 bg-emerald-500/15 text-white'
-
   return (
     <button
       onClick={() => onSelect(name)}
-      className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border font-bold text-base transition-all hover:scale-[1.02] active:scale-[0.98] ${
-        isActive ? activeStyle : 'border-gray-800 bg-gray-900 hover:border-gray-600 hover:bg-gray-800'
+      className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl border font-bold text-base transition-all hover:scale-[1.01] active:scale-[0.99] ${
+        isActive
+          ? 'border-[#3BBCD0]/50 bg-[#3BBCD0]/10 text-white'
+          : 'border-white/[0.07] bg-white/[0.03] hover:border-white/15 hover:bg-white/[0.06] text-gray-200'
       }`}
     >
       <span
-        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-black shrink-0 ${
-          isActive
-            ? group === 'A'
-              ? 'bg-blue-500 text-white'
-              : 'bg-emerald-500 text-white'
-            : 'bg-gray-800 text-gray-400'
+        className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-black shrink-0 ${
+          isActive ? 'wojo-gradient text-black' : 'bg-white/[0.08] text-gray-400'
         }`}
       >
         {name[0]}
       </span>
       <div className="flex flex-col items-start">
-        <span>{name}</span>
-        {entreprise && <span className="text-xs font-normal text-gray-400">{entreprise}</span>}
+        <span className="text-sm font-bold">{name}</span>
+        {entreprise && <span className="text-xs font-normal text-gray-500">{entreprise}</span>}
       </div>
+      {isActive && <span className="ml-auto text-[#3BBCD0] text-xs font-bold">✓</span>}
     </button>
   )
 }

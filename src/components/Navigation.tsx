@@ -16,16 +16,13 @@ export default function Navigation() {
   const { currentPlayer, currentEntreprise, clearPlayer } = useCurrentPlayer()
 
   return (
-    <header className="sticky top-0 z-50 bg-gray-950/90 backdrop-blur border-b border-gray-800">
+    <header className="sticky top-0 z-50 border-b border-white/[0.06]" style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(20px)' }}>
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="flex items-center justify-between h-14">
+
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-black text-lg tracking-tight hover:text-white transition-colors"
-          >
-            <span className="text-2xl">🏓</span>
-            <span className="hidden sm:block text-white">BUREAU PPL</span>
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <span className="font-black text-sm tracking-widest uppercase wojo-text">Wojo PPL</span>
           </Link>
 
           {/* Nav links */}
@@ -34,10 +31,10 @@ export default function Navigation() {
               <Link
                 key={href}
                 href={href}
-                className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
+                className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${
                   pathname === href
-                    ? 'bg-gray-800 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    ? 'bg-white/10 text-white border border-white/10'
+                    : 'text-gray-500 hover:text-white hover:bg-white/[0.05]'
                 }`}
               >
                 {label}
@@ -48,22 +45,22 @@ export default function Navigation() {
           {/* Current player */}
           <div className="flex items-center gap-2">
             {currentPlayer ? (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => router.push(`/player/${encodeURIComponent(currentPlayer)}`)}
-                  className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 transition-colors px-3 py-1.5 rounded-lg text-sm font-semibold"
+                  className="flex items-center gap-2 glass-btn px-3 py-1.5 rounded-xl text-sm font-semibold"
                 >
-                  <span className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-emerald-500 flex items-center justify-center text-xs text-white font-black">
+                  <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black text-black wojo-gradient shrink-0">
                     {currentPlayer[0]}
                   </span>
-                  <div className="hidden sm:flex flex-col items-start">
-                    <span>{currentPlayer}</span>
-                    {currentEntreprise && <span className="text-xs text-gray-400 font-normal">{currentEntreprise}</span>}
+                  <div className="hidden sm:flex flex-col items-start leading-tight">
+                    <span className="text-white text-xs font-bold">{currentPlayer}</span>
+                    {currentEntreprise && <span className="text-[10px] text-gray-500">{currentEntreprise}</span>}
                   </div>
                 </button>
                 <button
                   onClick={clearPlayer}
-                  className="text-gray-500 hover:text-gray-300 text-xs px-2 py-1.5"
+                  className="text-gray-600 hover:text-gray-400 text-xs px-1.5 py-1.5 transition-colors"
                   title="Changer de joueur"
                 >
                   ✕
@@ -72,7 +69,7 @@ export default function Navigation() {
             ) : (
               <Link
                 href="/"
-                className="text-sm font-semibold text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-800 px-3 py-1.5 rounded-lg transition-colors"
+                className="text-sm font-semibold text-gray-500 hover:text-white glass-btn px-3 py-1.5 rounded-xl"
               >
                 Accueil
               </Link>
