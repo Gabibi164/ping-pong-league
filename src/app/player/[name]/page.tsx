@@ -116,8 +116,10 @@ export default function PlayerPage() {
                 }`}
               >
                 Groupe {player?.group_name} ·{' '}
-                {!loading && rank > 0
+                {!loading && rank > 0 && myPlayed.length > 0
                   ? `${rank}${rankSuffix} au classement`
+                  : !loading
+                  ? `Groupe ${player?.group_name}`
                   : 'Chargement…'}
               </p>
             </div>

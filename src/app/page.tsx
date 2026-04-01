@@ -103,6 +103,7 @@ export default function HomePage() {
                   <PlayerButton
                     key={p.id}
                     name={p.name}
+                    entreprise={p.entreprise}
                     isActive={currentPlayer === p.name}
                     group="A"
                     onSelect={handleSelect}
@@ -128,6 +129,7 @@ export default function HomePage() {
                   <PlayerButton
                     key={p.id}
                     name={p.name}
+                    entreprise={p.entreprise}
                     isActive={currentPlayer === p.name}
                     group="B"
                     onSelect={handleSelect}
@@ -229,11 +231,13 @@ export default function HomePage() {
 
 function PlayerButton({
   name,
+  entreprise,
   group,
   isActive,
   onSelect,
 }: {
   name: string
+  entreprise?: string | null
   group: 'A' | 'B'
   isActive: boolean
   onSelect: (name: string) => void
@@ -251,7 +255,7 @@ function PlayerButton({
       }`}
     >
       <span
-        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-black ${
+        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-black shrink-0 ${
           isActive
             ? group === 'A'
               ? 'bg-blue-500 text-white'
@@ -261,7 +265,10 @@ function PlayerButton({
       >
         {name[0]}
       </span>
-      <span>{name}</span>
+      <div className="flex flex-col items-start">
+        <span>{name}</span>
+        {entreprise && <span className="text-xs font-normal text-gray-400">{entreprise}</span>}
+      </div>
     </button>
   )
 }
