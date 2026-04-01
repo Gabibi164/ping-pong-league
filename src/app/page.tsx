@@ -73,7 +73,7 @@ export default function HomePage() {
           </span>
         </h1>
         <p className="text-gray-400 text-lg mt-4">
-          Qui es-tu ? Sélectionne ton nom pour accéder à ton profil.
+          Clique sur ton nom pour accéder à ton profil.
         </p>
       </div>
 
