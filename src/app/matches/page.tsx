@@ -39,7 +39,15 @@ export default function MatchesPage() {
         () => load()
       )
       .subscribe()
-    return () => { supabase.removeChannel(channel) }
+    const onFocus = () => load()
+    window.addEventListener('focus', onFocus)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') load()
+    })
+    return () => {
+      supabase.removeChannel(channel)
+      window.removeEventListener('focus', onFocus)
+    }
   }, [])
 
   const groupMatches = useMemo(

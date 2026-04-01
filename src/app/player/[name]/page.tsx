@@ -34,7 +34,15 @@ export default function PlayerPage() {
       .channel(`player-${playerName}`)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'matches' }, () => load())
       .subscribe()
-    return () => { supabase.removeChannel(channel) }
+    const onFocus = () => load()
+    window.addEventListener('focus', onFocus)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') load()
+    })
+    return () => {
+      supabase.removeChannel(channel)
+      window.removeEventListener('focus', onFocus)
+    }
   }, [playerName])
 
   const player = players.find((p) => p.name === playerName)
