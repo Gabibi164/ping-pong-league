@@ -107,6 +107,9 @@ export default function PlayerPage() {
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-3xl font-black">{playerName}</h1>
               </div>
+              {player?.entreprise && (
+                <p className="text-sm text-gray-400 mt-0.5">{player.entreprise}</p>
+              )}
               <p
                 className={`text-sm font-semibold mt-0.5 ${
                   groupColor === 'blue' ? 'text-blue-400' : 'text-emerald-400'
