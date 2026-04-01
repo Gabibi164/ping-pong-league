@@ -1,0 +1,39 @@
+import type { Metadata } from 'next'
+import './globals.css'
+import Navigation from '@/components/Navigation'
+
+export const metadata: Metadata = {
+  title: 'Wojo Ping Pong League',
+  description: 'La ligue de ping pong du coworking Wojo',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Wojo PPL',
+  },
+  icons: {
+    icon: '/icons/icon-192x192.png',
+    apple: '/icons/apple-touch-icon.png',
+  },
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="fr">
+      <head>
+        <meta name="theme-color" content="#3BBCD0" />
+        <meta name="mobile-web-app-capable" content="yes" />
+      </head>
+      <body className="bg-gray-950 text-gray-50 min-h-screen">
+        <Navigation />
+        <main className="container mx-auto px-4 pb-16 max-w-5xl">
+          {children}
+        </main>
+      </body>
+    </html>
+  )
+}
