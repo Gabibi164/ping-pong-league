@@ -131,15 +131,22 @@ export default function MatchesPage() {
         </div>
       ) : (
         <div className="flex flex-col gap-2">
-          {filtered.map((match) => (
-            <MatchCard
-              key={match.id}
-              match={match}
-              currentPlayerName={currentPlayer ?? undefined}
-              onEnterScore={!match.is_played ? setActiveMatch : undefined}
-              onProposeSlot={!match.is_played ? setScheduleMatch : undefined}
-              onRefresh={load}
-            />
+          {filtered.map((match) => {
+            const isInvolved = currentPlayer && (
+              match.player1?.name === currentPlayer ||
+              match.player2?.name === currentPlayer
+            )
+            return (
+              <MatchCard
+                key={match.id}
+                match={match}
+                currentPlayerName={currentPlayer ?? undefined}
+                onEnterScore={!match.is_played && isInvolved ? setActiveMatch : undefined}
+                onProposeSlot={!match.is_played && isInvolved ? setScheduleMatch : undefined}
+                onRefresh={load}
+              />
+            )
+          }}
           ))}
         </div>
       )}
