@@ -180,6 +180,7 @@ export default function HomePage() {
                     onChange={(e) => setNewEntreprise(e.target.value)}
                     placeholder="Ton entreprise"
                     maxLength={60}
+                    required
                     className="bg-gray-800 border border-gray-700 focus:border-gray-500 outline-none rounded-lg px-3 py-2 text-white text-sm"
                   />
                 </div>
@@ -189,7 +190,7 @@ export default function HomePage() {
                 <div className="flex gap-2">
                   <button
                     type="submit"
-                    disabled={registering || !newName.trim()}
+                    disabled={registering || !newName.trim() || !newEntreprise.trim()}
                     className="flex-1 bg-white text-gray-950 font-black rounded-lg py-2 text-sm hover:bg-gray-200 disabled:opacity-50 transition-all"
                   >
                     {registering ? 'Inscription…' : 'S\'inscrire'}

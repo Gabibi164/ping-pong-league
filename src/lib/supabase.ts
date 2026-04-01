@@ -85,9 +85,17 @@ export async function registerPlayer(name: string, entreprise: string) {
   else if (countB < countA) group = 'B'
   else group = Math.random() < 0.5 ? 'A' : 'B'
 
+  const { data: duplicate } = await supabase
+    .from('players')
+    .select('id')
+    .eq('name', name.trim())
+    .eq('entreprise', entreprise.trim())
+    .single()
+  if (duplicate) throw new Error('Un joueur avec ce nom et cette entreprise existe déjà.')
+
   const { data: newPlayer, error } = await supabase
     .from('players')
-    .insert({ name: name.trim(), group_name: group, entreprise: entreprise.trim() || null })
+    .insert({ name: name.trim(), group_name: group, entreprise: entreprise.trim() })
     .select()
     .single()
   if (error) throw error
