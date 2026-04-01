@@ -87,13 +87,14 @@ export default function MatchCard({
 
         {/* Players + score */}
         <div className="flex-1 flex items-center gap-3 min-w-0">
-          <span
-            className={`font-bold text-base truncate flex-1 text-right transition-colors ${
+          <div className={`flex flex-col items-end flex-1 min-w-0`}>
+            <span className={`font-bold text-base truncate transition-colors ${
               p1Won ? 'text-white' : match.is_played ? 'text-gray-500' : 'text-gray-200'
-            } ${p1Name === currentPlayerName ? 'text-white underline underline-offset-2 decoration-dotted' : ''}`}
-          >
-            {p1Name}
-          </span>
+            } ${p1Name === currentPlayerName ? 'text-white underline underline-offset-2 decoration-dotted' : ''}`}>
+              {p1Name}
+            </span>
+            {p1?.entreprise && <span className="text-xs text-gray-500 truncate">{p1.entreprise}</span>}
+          </div>
 
           {match.is_played ? (
             <div className="flex items-center gap-2 shrink-0">
@@ -109,13 +110,14 @@ export default function MatchCard({
             <span className="text-gray-700 font-bold text-lg shrink-0">vs</span>
           )}
 
-          <span
-            className={`font-bold text-base truncate flex-1 transition-colors ${
+          <div className="flex flex-col flex-1 min-w-0">
+            <span className={`font-bold text-base truncate transition-colors ${
               p2Won ? 'text-white' : match.is_played ? 'text-gray-500' : 'text-gray-200'
-            } ${p2Name === currentPlayerName ? 'text-white underline underline-offset-2 decoration-dotted' : ''}`}
-          >
-            {p2Name}
-          </span>
+            } ${p2Name === currentPlayerName ? 'text-white underline underline-offset-2 decoration-dotted' : ''}`}>
+              {p2Name}
+            </span>
+            {p2?.entreprise && <span className="text-xs text-gray-500 truncate">{p2.entreprise}</span>}
+          </div>
         </div>
 
         {/* Right actions */}

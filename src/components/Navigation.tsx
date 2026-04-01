@@ -13,7 +13,7 @@ const NAV_LINKS = [
 export default function Navigation() {
   const pathname = usePathname()
   const router = useRouter()
-  const { currentPlayer, clearPlayer } = useCurrentPlayer()
+  const { currentPlayer, currentEntreprise, clearPlayer } = useCurrentPlayer()
 
   return (
     <header className="sticky top-0 z-50 bg-gray-950/90 backdrop-blur border-b border-gray-800">
@@ -56,7 +56,10 @@ export default function Navigation() {
                   <span className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-emerald-500 flex items-center justify-center text-xs text-white font-black">
                     {currentPlayer[0]}
                   </span>
-                  <span className="hidden sm:block">{currentPlayer}</span>
+                  <div className="hidden sm:flex flex-col items-start">
+                    <span>{currentPlayer}</span>
+                    {currentEntreprise && <span className="text-xs text-gray-400 font-normal">{currentEntreprise}</span>}
+                  </div>
                 </button>
                 <button
                   onClick={clearPlayer}

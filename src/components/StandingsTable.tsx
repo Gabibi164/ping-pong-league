@@ -117,16 +117,14 @@ export default function StandingsTable({
                     {/* Name */}
                     <td className="px-3 py-3">
                       <div className="flex items-center gap-2">
-                        <span
-                          className={`font-bold ${isCurrent ? 'text-white' : 'text-gray-200'}`}
-                        >
-                          {s.player.name}
-                        </span>
-                        {s.player.name === 'Louis' && (
-                          <span className="badge bg-amber-500/20 text-amber-400">
-                            📅 Lun/Mar
+                        <div className="flex flex-col">
+                          <span className={`font-bold ${isCurrent ? 'text-white' : 'text-gray-200'}`}>
+                            {s.player.name}
                           </span>
-                        )}
+                          {s.player.entreprise && (
+                            <span className="text-xs text-gray-500">{s.player.entreprise}</span>
+                          )}
+                        </div>
                         {isQualified && (
                           <span
                             className={`badge hidden lg:inline-flex ${

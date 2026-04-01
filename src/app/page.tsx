@@ -34,7 +34,8 @@ export default function HomePage() {
   }, [])
 
   const handleSelect = (name: string) => {
-    selectPlayer(name)
+    const player = players.find((p) => p.name === name)
+    selectPlayer(name, player?.entreprise)
     router.push(`/player/${encodeURIComponent(name)}`)
   }
 
