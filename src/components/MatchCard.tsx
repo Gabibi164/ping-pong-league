@@ -170,7 +170,7 @@ export default function MatchCard({
                 disabled={confirming}
                 className="text-xs font-bold px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 transition-colors disabled:opacity-50"
               >
-                {confirming ? '…' : 'Confirmer'}
+                {confirming ? '…' : 'Je confirme'}
               </button>
               {onProposeSlot && (
                 <button
