@@ -71,7 +71,7 @@ export default function Navigation() {
                 href="/"
                 className="text-sm font-semibold text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-800 px-3 py-1.5 rounded-lg transition-colors"
               >
-                Choisir un joueur
+                S'identifier
               </Link>
             )}
           </div>
